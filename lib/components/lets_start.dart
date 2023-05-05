@@ -1,15 +1,27 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class LetsStart extends StatefulWidget {
-  const LetsStart({super.key});
+class LetsStart extends StatelessWidget {
+  const LetsStart({Key? key, this.onPressed}) : super(key: key);
+  final onPressed;
 
-  @override
-  State<LetsStart> createState() => _LetsStartState();
-}
-
-class _LetsStartState extends State<LetsStart> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return CupertinoButton(
+      onPressed: onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            CupertinoIcons.right_chevron,
+            color: CupertinoColors.white.withOpacity(0.7),
+          ),
+          Text("Let\'s start",
+              style: TextStyle(
+                color: CupertinoColors.white.withOpacity(0.7),
+                fontSize: 25,
+              )),
+        ],
+      ),
+    );
   }
 }

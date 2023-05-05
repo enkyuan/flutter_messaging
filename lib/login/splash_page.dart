@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:messaging_app/components/blur_image_page_scaffold.dart';
 import 'package:messaging_app/components/lets_start.dart';
 import 'package:messaging_app/components/logo.dart';
+import 'package:messaging_app/components/terms_and_conditions.dart';
+import 'package:messaging_app/login/edit_number.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -31,15 +33,24 @@ class _SplashPageState extends State<SplashPage> {
         ),
         Column(
           children: [
-            Text("Messaging API for TeensNext",
-            style: TextStyle(
-              color: Colors.white.withOpacity(0.7),
-              fontSize: 20,
-            ),
+            Text(
+              "Messaging API for TeensNext",
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.7),
+                fontSize: 20,
+              ),
             ),
           ],
         ),
-        LetsStart(),
+        TermsAndConditions(
+          onPressed: () {},
+        ),
+        LetsStart(
+          onPressed: () {
+            Navigator.push(context,
+                CupertinoPageRoute(builder: (context) => EditNumber()));
+          },
+        ),
       ],
     );
   }

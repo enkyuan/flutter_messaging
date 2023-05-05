@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class TermsAndConditions extends StatelessWidget {
   const TermsAndConditions({Key? key, this.onPressed}) : super(key: key);
@@ -22,7 +21,9 @@ class TermsAndConditions extends StatelessWidget {
           ),
           child: Text(
             "Terms and Conditions",
-            style: TextStyle(color: Colors.white.withOpacity(0.7)),
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.7)
+            ),
           ),
         ),
       ),
