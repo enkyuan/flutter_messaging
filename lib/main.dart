@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:messaging_app/login/login.dart';
+import 'package:messaging_app/login/verify_number.dart';
+import 'package:messaging_app/pages/home.dart';
 // import 'package:messaging_app/login/splashPage.dart';
 
 import 'firebase_options.dart';
@@ -44,8 +46,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CupertinoApp(
       debugShowCheckedModeBanner: false,
-      // home: SplashPage(),
       home: SplashPage(),
+      // home: VerifyNumber(),
+      // home: HomePage(),
       theme: CupertinoThemeData(
         brightness: Brightness.light, primaryColor: Color(0xFF08C187)
       ),

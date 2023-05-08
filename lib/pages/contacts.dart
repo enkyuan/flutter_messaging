@@ -1,14 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Contacts extends StatefulWidget {
+class Contacts extends StatelessWidget {
   const Contacts({super.key});
 
-  @override
-  State<Contacts> createState() => _ContactsState();
-}
-
-class _ContactsState extends State<Contacts> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(

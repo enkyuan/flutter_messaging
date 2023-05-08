@@ -1,16 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Calls extends StatefulWidget {
+class Calls extends StatelessWidget {
   const Calls({super.key});
 
   @override
-  State<Calls> createState() => _CallsState();
-}
-
-class _CallsState extends State<Calls> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CustomScrollView(
+        slivers: [
+          CupertinoSliverNavigationBar(
+            largeTitle: Text("Calls")
+          )
+        ],
     );
   }
 }

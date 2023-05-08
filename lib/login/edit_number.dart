@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:messaging_app/login/login.dart';
 import 'package:messaging_app/login/select_country.dart';
 
 class EditNumber extends StatefulWidget {
@@ -94,7 +95,17 @@ class _EditNumberState extends State<EditNumber> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 40.0),
             child: CupertinoButton.filled(
-                child: Text("Request code"), onPressed: () {}),
+                child: Text("Request code"), 
+                onPressed: () {
+                  Navigator.push(
+                    context, 
+                    CupertinoPageRoute
+                    (builder: ((context) => VerifyNumber(
+                      number: data['code']! + _enterPhoneNumber.text,
+                    )))
+                  );
+                }
+            ),
           )
         ],
       ),
