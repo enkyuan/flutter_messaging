@@ -1,9 +1,32 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:messaging_app/pages/home.dart';
 
 class UserName extends StatelessWidget {
   UserName({super.key});
 
   var _text = TextEditingController();
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  void createUserInFirestore() {
+    users
+        .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .limit(1)
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+          if (querySnapshot.docs.isEmpty) {
+            users.add({
+              'name': _text.text,
+              'phone': FirebaseAuth.instance.currentUser?.phoneNumber,
+              'status': 'Available',
+              'uid': FirebaseAuth.instance.currentUser?.uid,
+            }
+            );
+          }
+        })
+        .catchError((error) {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +44,18 @@ class UserName extends StatelessWidget {
               maxLength: 15,
               controller: _text,
             ),
-          )
+          ),
+          CupertinoButton.filled(
+              child: Text("Continue"),
+              onPressed: () {
+                FirebaseAuth.instance.currentUser
+                    ?.updateDisplayName(_text.text);
+                    
+                createUserInFirestore();
+
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => HomePage()));
+              }),
         ],
       ),
     );
