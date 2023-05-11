@@ -40,7 +40,7 @@ dependencies:
   cloud_firestore: ^4.5.3
   cloud_functions: ^4.1.1
   firebase_core_web: ^2.3.0
-  chat_bubbles: ^1.4.0
+  flutter_chat_bubble: ^2.0.2
 
 dev_dependencies:
   flutter_test:

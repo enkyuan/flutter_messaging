@@ -9,7 +9,6 @@ class Calls extends StatelessWidget {
         slivers: [
           CupertinoSliverNavigationBar(
             largeTitle: Text("Calls"),
-            
           )
         ],
     );
