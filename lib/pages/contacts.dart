@@ -10,13 +10,12 @@ class Contacts extends StatelessWidget {
 
   void callMessagesScreen(BuildContext context, String name, String uid) {
     Navigator.push(
-      context,
-      CupertinoPageRoute(builder: ((context) => ChannelDetails(
-        messengerUid: uid,
-        messengerName: name,
-        )
-      ))
-    );
+        context,
+        CupertinoPageRoute(
+            builder: ((context) => ChannelDetails(
+                  messengerUid: uid,
+                  messengerName: name,
+                ))));
   }
 
   @override
@@ -51,8 +50,8 @@ class Contacts extends StatelessWidget {
                     Map<String, dynamic> data =
                         document.data()! as Map<String, dynamic>;
                     return CupertinoListTile(
-                      onTap: () =>
-                          callMessagesScreen(context, data['name'], data['uid']),
+                      onTap: () => callMessagesScreen(
+                          context, data['name'], data['uid']),
                       title: Text(data['name']),
                       subtitle: Text(data['status']),
                     );

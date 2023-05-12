@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var screens = [Messages(), Calls(), Contacts(), UserProfile()];
+  var screens = [const Messages(), const Calls(), Contacts(), const UserProfile()];
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
         resizeToAvoidBottomInset: true,
         tabBar: CupertinoTabBar(
           height: 60.0,
-          items: [
+          items: const [
             BottomNavigationBarItem(
               label: "Messages",
               icon: Icon(CupertinoIcons.ellipses_bubble),
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(CupertinoIcons.phone),
             ),
             BottomNavigationBarItem(
-              label: "Contacts", 
+              label: "Contacts",
               icon: Icon(CupertinoIcons.collections),
             ),
             BottomNavigationBarItem(

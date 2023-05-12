@@ -191,11 +191,10 @@ class _ChannelDetailsState extends State<ChannelDetails> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Expanded(
-                          child:
-                              Padding(
-                                padding: const EdgeInsets.only(left: 18.0),
-                                child: CupertinoTextField(controller: _textController),
-                              )),
+                          child: Padding(
+                        padding: const EdgeInsets.only(left: 18.0),
+                        child: CupertinoTextField(controller: _textController),
+                      )),
                       CupertinoButton(
                         child: Icon(CupertinoIcons.arrow_up_circle_fill),
                         onPressed: () => sendMessage(_textController.text),
@@ -205,7 +204,7 @@ class _ChannelDetailsState extends State<ChannelDetails> {
                 ],
               )),
             );
-          } else {   
+          } else {
             return Container();
           }
         });
