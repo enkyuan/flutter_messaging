@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:messaging_app/pages/pages.dart';
+import 'package:messaging_app/states/lib.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,7 +10,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var screens = [const Messages(), const Calls(), Contacts(), const UserProfile()];
+  var screens = [
+    const Messages(),
+    const Calls(),
+    Contacts(),
+    const UserProfile()
+  ];
+
+  @override
+  void initState() {
+    messageState.refreshMessagesForCurrentUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

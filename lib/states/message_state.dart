@@ -2,10 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobx/mobx.dart';
 
+// Include generated file
 part 'message_state.g.dart';
 
 class MessageState = _MessageState with _$MessageState;
 
+// Store class
 abstract class _MessageState with Store {
   var currentUser = FirebaseAuth.instance.currentUser?.uid;
   CollectionReference messages =
@@ -17,7 +19,6 @@ abstract class _MessageState with Store {
   @action
   void refreshMessagesForCurrentUser() {
     var messageDocuments = [];
-
     messages
         .where('users.$currentUser', isNull: true)
         .snapshots()
@@ -27,7 +28,7 @@ abstract class _MessageState with Store {
         Map<String, dynamic> names = data['names'];
         names.remove(currentUser);
 
-        return {'docid': doc.id, 'names': names.values.first};
+        return {'docid': doc.id, 'name': names.values.first};
       }).toList();
 
       for (var doc in messageDocuments) {
@@ -41,7 +42,7 @@ abstract class _MessageState with Store {
             threads[doc['name']] = {
               'msg': snapshot.docs.first['msg'],
               'time': snapshot.docs.first['createdOn'],
-              'messengerName': doc['name'],
+              'messengerName': doc['name'], 
               'messengerUid': snapshot.docs.first['uid']
             };
           }

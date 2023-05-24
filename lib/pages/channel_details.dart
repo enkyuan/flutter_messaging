@@ -63,7 +63,7 @@ class _ChannelDetailsState extends State<ChannelDetails> {
 
   void sendMessage(String msg) {
     if (msg == '') return;
-    messages.doc(channelDocId).collection('messages').add({
+    messages.doc(channelDocId).collection('threads').add({
       'createdOn': FieldValue.serverTimestamp(),
       'uid': currentUserId,
       'messengerName': messengerName,
@@ -89,7 +89,7 @@ class _ChannelDetailsState extends State<ChannelDetails> {
     return StreamBuilder<QuerySnapshot>(
         stream: messages
             .doc(channelDocId)
-            .collection('messages')
+            .collection('threads')
             .orderBy('createdOn', descending: true)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -113,7 +113,9 @@ class _ChannelDetailsState extends State<ChannelDetails> {
                 middle: Text(messengerName),
                 trailing: CupertinoButton(
                   padding: EdgeInsets.zero,
-                  onPressed: () {},
+                  onPressed: () {
+                    // TODO: Implement this
+                  },
                   child: Icon(CupertinoIcons.phone),
                 ),
               ),
@@ -151,7 +153,7 @@ class _ChannelDetailsState extends State<ChannelDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      data['msg'],
+                                      data['msg'].toString(),
                                       style: TextStyle(
                                           color:
                                               isSender(data['uid'].toString())

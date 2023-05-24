@@ -11,12 +11,6 @@ class Messages extends StatefulWidget {
 }
 
 class _MessagesState extends State<Messages> {
-  @override
-  void initState() {
-    super.initState();
-    messageState.refreshMessagesForCurrentUser();
-  }
-
   void callMessagesScreen(BuildContext context, String name, String uid) {
     Navigator.push(
         context,

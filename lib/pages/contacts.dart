@@ -22,7 +22,7 @@ class Contacts extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
-            .collection("users")
+            .collection('users')
             .where('uid', isNotEqualTo: currentUser)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
