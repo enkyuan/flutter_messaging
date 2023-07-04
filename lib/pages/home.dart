@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var screens = [
     const Messages(),
-    const Calls(),
     Contacts(),
     const UserProfile()
   ];
@@ -20,6 +19,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     messageState.refreshMessagesForCurrentUser();
+    userState.initUserListener();
     super.initState();
   }
 
