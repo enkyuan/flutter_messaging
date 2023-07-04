@@ -19,6 +19,7 @@ class _SelectCountryState extends State<SelectCountry> {
 
   @override
   void initState() {
+    super.initState();
     _getData();
   }
 

@@ -5,8 +5,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:messaging_app/login/login.dart';
-import 'package:messaging_app/login/verify_number.dart';
-import 'package:messaging_app/pages/home.dart';
+// import 'package:messaging_app/login/verify_number.dart';
+// import 'package:messaging_app/pages/home.dart';
 // import 'package:messaging_app/login/splashPage.dart';
 
 import 'firebase_options.dart';

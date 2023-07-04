@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:messaging_app/pages/pages.dart';
 import 'package:messaging_app/states/lib.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Home> createState() => _HomeState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeState extends State<Home> {
   var screens = [
     const Messages(),
     Contacts(),

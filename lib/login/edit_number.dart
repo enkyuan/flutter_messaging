@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:messaging_app/login/login.dart';
-import 'package:messaging_app/login/select_country.dart';
 
 class EditNumber extends StatefulWidget {
   const EditNumber({super.key});
@@ -55,9 +54,7 @@ class _EditNumberState extends State<EditNumber> {
             onTap: () async {
               dataResult = await Navigator.push(context, CupertinoPageRoute(builder: (context) => SelectCountry()));
               setState(() {
-                if (dataResult != null) {
-                  data = dataResult;
-                }
+                data = dataResult;
               });
             },
             title: Text(data['name'], style: TextStyle(color: Color(0xFF08C187))),

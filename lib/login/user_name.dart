@@ -99,7 +99,7 @@ class _UserNameState extends State<UserName> {
                 userState.createOrUpdateUserInFirestore(_text.text);
 
                 Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => const HomePage()));
+                    CupertinoPageRoute(builder: (context) => const Home()));
               }),
         ],
       ),
