@@ -15,7 +15,7 @@ class LetsStart extends StatelessWidget {
             CupertinoIcons.right_chevron,
             color: CupertinoColors.white.withOpacity(0.7),
           ),
-          Text("Let\'s start",
+          Text("Let's start",
               style: TextStyle(
                 color: CupertinoColors.white.withOpacity(0.7),
                 fontSize: 25,

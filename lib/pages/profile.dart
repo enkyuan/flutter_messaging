@@ -5,7 +5,7 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    return const CustomScrollView(
       slivers: [
         CupertinoSliverNavigationBar(
           largeTitle: Text("Profile"),

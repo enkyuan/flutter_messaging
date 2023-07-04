@@ -24,7 +24,7 @@ class _ChannelDetailsState extends State<ChannelDetails> {
   final messengerName;
   final currentUserId = FirebaseAuth.instance.currentUser?.uid;
   var channelDocId;
-  var _textController = new TextEditingController();
+  final _textController = TextEditingController();
 
   _ChannelDetailsState(this.messengerUid, this.messengerName);
 
@@ -94,19 +94,19 @@ class _ChannelDetailsState extends State<ChannelDetails> {
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Center(
+            return const Center(
               child: Text("Error occurred"),
             );
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: Text("Loading"),
             );
           }
 
           if (snapshot.hasData) {
-            var data;
+            Object data;
             return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
                 previousPageTitle: "Back",
@@ -116,7 +116,7 @@ class _ChannelDetailsState extends State<ChannelDetails> {
                   onPressed: () {
                     // TODO: Implement this
                   },
-                  child: Icon(CupertinoIcons.phone),
+                  child: const Icon(CupertinoIcons.phone),
                 ),
               ),
               child: SafeArea(
@@ -139,10 +139,10 @@ class _ChannelDetailsState extends State<ChannelDetails> {
                                 : BubbleType.receiverBubble,
                           ),
                           alignment: getAlignment(data['uid'].toString()),
-                          margin: EdgeInsets.only(top: 20),
+                          margin: const EdgeInsets.only(top: 20),
                           backGroundColor: isSender(data['uid'].toString())
-                              ? Color(0xFF08C187)
-                              : Color(0xffE7E7ED),
+                              ? const Color(0xFF08C187)
+                              : const Color(0xffE7E7ED),
                           child: Container(
                             constraints: BoxConstraints(
                               maxWidth: MediaQuery.of(context).size.width * 0.7,
@@ -198,7 +198,7 @@ class _ChannelDetailsState extends State<ChannelDetails> {
                         child: CupertinoTextField(controller: _textController),
                       )),
                       CupertinoButton(
-                        child: Icon(CupertinoIcons.arrow_up_circle_fill),
+                        child: const Icon(CupertinoIcons.arrow_up_circle_fill),
                         onPressed: () => sendMessage(_textController.text),
                       )
                     ],

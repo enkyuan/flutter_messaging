@@ -7,7 +7,7 @@ import 'package:messaging_app/pages/home.dart';
 import 'package:messaging_app/states/lib.dart';
 
 class UserName extends StatefulWidget {
-  UserName({super.key});
+  const UserName({super.key});
 
   @override
   State<UserName> createState() => _UserNameState();
@@ -84,7 +84,7 @@ class _UserNameState extends State<UserName> {
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 55),
             child: CupertinoTextField(
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 25),
+              style: const TextStyle(fontSize: 25),
               maxLength: 15,
               controller: _text,
             ),

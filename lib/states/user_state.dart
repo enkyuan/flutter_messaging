@@ -26,7 +26,7 @@ abstract class _UserState with Store {
   File? imagefile;
 
   var _profilePicUrl;
-  var _userCollection = FirebaseFirestore.instance.collection('users');
+  final _userCollection = FirebaseFirestore.instance.collection('users');
 
   @action
   initUserListener() {
@@ -34,7 +34,7 @@ abstract class _UserState with Store {
         .collection('users')
         .snapshots()
         .listen((QuerySnapshot snapshot) {
-      snapshot.docs.forEach((doc) {
+      for (var doc in snapshot.docs) {
         Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         users[data['uid']] = {
           'name': data['name'],
@@ -42,7 +42,7 @@ abstract class _UserState with Store {
           'status': data['status'],
           'picture': data['picture'],
         };
-      });
+      }
     });
   }
 
@@ -79,9 +79,7 @@ abstract class _UserState with Store {
 
   void createOrUpdateUserInFirestore(String userName) {
     FirebaseAuth.instance.currentUser?.updateDisplayName(userName);
-    var docId;
-    this
-        ._userCollection
+    _userCollection
         .where('uid', isEqualTo: FirebaseAuth.instance.currentUser?.uid)
         .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
         .limit(1)
@@ -89,7 +87,7 @@ abstract class _UserState with Store {
         .then((QuerySnapshot querySnapshot) {
       // create user info in Firestore use case
       if (querySnapshot.docs.isEmpty) {
-        this._userCollection.add({
+        _userCollection.add({
           'name': userName,
           'phone': FirebaseAuth.instance.currentUser?.phoneNumber,
           'status': 'Available',
@@ -97,19 +95,17 @@ abstract class _UserState with Store {
           'picture': _profilePicUrl
         });
       } else {
-        docId = querySnapshot.docs.first.id;
+        
       }
 
       // update user info in Firestore use case
-      if (docId != null) {
-        this._userCollection.doc().update({
-          'name': userName,
-          'phone': FirebaseAuth.instance.currentUser?.phoneNumber,
-          'status': 'Available',
-          'uid': FirebaseAuth.instance.currentUser?.uid,
-          'picture': _profilePicUrl
-        });
-      }
+      _userCollection.doc().update({
+        'name': userName,
+        'phone': FirebaseAuth.instance.currentUser?.phoneNumber,
+        'status': 'Available',
+        'uid': FirebaseAuth.instance.currentUser?.uid,
+        'picture': _profilePicUrl
+      });
     }).catchError((error) {});
   }
 }

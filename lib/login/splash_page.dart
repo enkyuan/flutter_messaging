@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
     return BlurImageScaffoldPage(
       imagePath: 'assets/images/background.png',
       body: [
-        Logo(
+        const Logo(
           width: 150,
           height: 150,
           radius: 50,
@@ -48,7 +48,7 @@ class _SplashPageState extends State<SplashPage> {
         LetsStart(
           onPressed: () {
             Navigator.push(context,
-                CupertinoPageRoute(builder: (context) => EditNumber()));
+                CupertinoPageRoute(builder: (context) => const EditNumber()));
           },
         ),
       ],

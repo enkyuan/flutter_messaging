@@ -30,13 +30,13 @@ class Contacts extends StatelessWidget {
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Center(
+            return const Center(
               child: Text("Error occurred"),
             );
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: Text("Loading"),
             );
           }
@@ -44,7 +44,7 @@ class Contacts extends StatelessWidget {
           if (snapshot.hasData) {
             return CustomScrollView(
               slivers: [
-                CupertinoSliverNavigationBar(
+                const CupertinoSliverNavigationBar(
                   largeTitle: Text("Contacts"),
                 ),
                 SliverList(

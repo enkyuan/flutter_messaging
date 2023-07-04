@@ -9,14 +9,14 @@ class EditNumber extends StatefulWidget {
 }
 
 class _EditNumberState extends State<EditNumber> {
-  var _enterPhoneNumber = TextEditingController();
+  final _enterPhoneNumber = TextEditingController();
   Map<String, dynamic> data = {"name": "Select a country", "code": "+"};
   late Map<String, dynamic> dataResult;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+      navigationBar: const CupertinoNavigationBar(
         middle: Text("Edit Number"),
         previousPageTitle: "Back",
       ),
@@ -26,7 +26,7 @@ class _EditNumberState extends State<EditNumber> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image(
+              const Image(
                 image: AssetImage(
                 'assets/images/speech_bubble.png'
                 ),
@@ -37,7 +37,7 @@ class _EditNumberState extends State<EditNumber> {
                 "Verification : one step",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color(0xFF08C187).withOpacity(0.7),
+                  color: const Color(0xFF08C187).withOpacity(0.7),
                   fontSize: 40,
                 ),
               ),
@@ -52,12 +52,12 @@ class _EditNumberState extends State<EditNumber> {
           ),
           CupertinoListTile(
             onTap: () async {
-              dataResult = await Navigator.push(context, CupertinoPageRoute(builder: (context) => SelectCountry()));
+              dataResult = await Navigator.push(context, CupertinoPageRoute(builder: (context) => const SelectCountry()));
               setState(() {
                 data = dataResult;
               });
             },
-            title: Text(data['name'], style: TextStyle(color: Color(0xFF08C187))),
+            title: Text(data['name'], style: const TextStyle(color: Color(0xFF08C187))),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -65,7 +65,7 @@ class _EditNumberState extends State<EditNumber> {
               children: [
                 Text(
                   data['code'],
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 25, color: CupertinoColors.secondaryLabel),
                 ),
                 Expanded(
@@ -74,7 +74,7 @@ class _EditNumberState extends State<EditNumber> {
                     placeholder: "Enter your phone number",
                     controller: _enterPhoneNumber,
                     keyboardType: TextInputType.number,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 25,
                       color: CupertinoColors.secondaryLabel,
                     ),
@@ -82,7 +82,7 @@ class _EditNumberState extends State<EditNumber> {
               ],
             ),
           ),
-          Text(
+          const Text(
             "Verification code will be sent shortly",
             style: TextStyle(
               color: CupertinoColors.systemGrey,
@@ -92,7 +92,7 @@ class _EditNumberState extends State<EditNumber> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 40.0),
             child: CupertinoButton.filled(
-                child: Text("Request code"), 
+                child: const Text("Request code"), 
                 onPressed: () {
                   Navigator.push(
                     context, 

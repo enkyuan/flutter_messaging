@@ -12,7 +12,7 @@ class TermsAndConditions extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white),
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(

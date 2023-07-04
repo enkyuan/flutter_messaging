@@ -15,8 +15,8 @@ class _VerifyNumberState extends State<VerifyNumber> {
   final phoneNumber;
   var _status = Status.Waiting;
   var _verificationId;
-  var _textEditingController = TextEditingController();
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final _textEditingController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   _VerifyNumberState(this.phoneNumber);
 
   @override
@@ -32,7 +32,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
         verificationFailed: (verificationFailed) async {},
         codeSent: (verificationId, resendingToken) async {
           setState(() {
-            this._verificationId = verificationId;
+            _verificationId = verificationId;
           });
         },
         codeAutoRetrievalTimeout: (verificationId) async {}
@@ -40,7 +40,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
   }
 
   Future _sendCodeToFirebase({String? code}) async {
-    if (this._verificationId != null) {
+    if (_verificationId != null) {
       var credential = PhoneAuthProvider.credential(
           verificationId: _verificationId, smsCode: code!);
         
@@ -48,13 +48,13 @@ class _VerifyNumberState extends State<VerifyNumber> {
           .signInWithCredential(credential)
           .then((value) {
             Navigator.push(
-                context, CupertinoPageRoute(builder: (context) => UserName()));
+                context, CupertinoPageRoute(builder: (context) => const UserName()));
           })
           .whenComplete(() {})
           .onError((error, stackTrace) {
             setState(() {
               _textEditingController.text = "";
-              this._status = Status.Error;
+              _status = Status.Error;
             });
           });
     }
@@ -63,7 +63,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+      navigationBar: const CupertinoNavigationBar(
         middle: Text("Verify Number"),
         previousPageTitle: "Edit Number",
       ),
@@ -75,13 +75,13 @@ class _VerifyNumberState extends State<VerifyNumber> {
                 Center(
                   child: Text("OTP Verification",
                       style: TextStyle(
-                          color: Color(0xFF08C187).withOpacity(0.7),
+                          color: const Color(0xFF08C187).withOpacity(0.7),
                           fontSize: 30)),
                 ),
-                Text("Enter OTP sent to",
+                const Text("Enter OTP sent to",
                     style: TextStyle(
                         color: CupertinoColors.secondaryLabel, fontSize: 20)),
-                Text(phoneNumber == null ? "" : phoneNumber),
+                Text(phoneNumber ?? ""),
                 CupertinoTextField(
                     // as code is inputted, digits are printed to console
                     onChanged: (value) async {
@@ -92,19 +92,19 @@ class _VerifyNumberState extends State<VerifyNumber> {
                       }
                     },
                     textAlign: TextAlign.center,
-                    style: TextStyle(letterSpacing: 30, fontSize: 30),
+                    style: const TextStyle(letterSpacing: 30, fontSize: 30),
                     maxLength: 6,
                     controller: _textEditingController,
                     keyboardType: TextInputType.number),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Didn't receive the OTP?"),
+                    const Text("Didn't receive the OTP?"),
                     CupertinoButton(
-                        child: Text("RESEND OTP"),
+                        child: const Text("RESEND OTP"),
                         onPressed: () async {
                           setState(() {
-                            this._status = Status.Waiting;
+                            _status = Status.Waiting;
                           });
                           _verifyPhoneNumber();
                         })
@@ -119,18 +119,18 @@ class _VerifyNumberState extends State<VerifyNumber> {
                 Center(
                   child: Text("OTP Verification",
                       style: TextStyle(
-                          color: Color(0xFF08C187).withOpacity(0.7),
+                          color: const Color(0xFF08C187).withOpacity(0.7),
                           fontSize: 30)),
                 ),
-                Text("Invalid Code"),
+                const Text("Invalid Code"),
                 CupertinoButton(
-                    child: Text("Edit Number"),
+                    child: const Text("Edit Number"),
                     onPressed: () => Navigator.pop(context)),
                 CupertinoButton(
-                    child: Text("Resend Code"),
+                    child: const Text("Resend Code"),
                     onPressed: () async {
                       setState(() {
-                        this._status = Status.Waiting;
+                        _status = Status.Waiting;
                       });
                       _verifyPhoneNumber();
                     }),

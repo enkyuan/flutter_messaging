@@ -27,7 +27,7 @@ class _MessagesState extends State<Messages> {
       builder: (BuildContext context) => 
       CustomScrollView(
         slivers: [
-          CupertinoSliverNavigationBar(
+          const CupertinoSliverNavigationBar(
             largeTitle: Text("Messages"),
           ),
           SliverList(

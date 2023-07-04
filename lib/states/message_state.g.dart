@@ -28,12 +28,12 @@ mixin  _$MessageState on _MessageState, Store {
 
   @override
   void refreshMessagesForCurrentUser() {
-    final _$actionInfo = _$_MessageStateActionController.startAction(
+    final $actionInfo = _$_MessageStateActionController.startAction(
         name: '_MessageState.refreshMessagesForCurrentUser');
     try {
       return super.refreshMessagesForCurrentUser();
     } finally {
-      _$_MessageStateActionController.endAction(_$actionInfo);
+      _$_MessageStateActionController.endAction($actionInfo);
     }
   }
 

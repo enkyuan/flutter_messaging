@@ -43,7 +43,7 @@ class _SelectCountryState extends State<SelectCountry> {
           ),
           SliverToBoxAdapter(
             child: CupertinoSearchTextField(
-              padding: EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(15.0),
               onChanged: (value) {
                 searchValue = value;
               },
@@ -68,7 +68,7 @@ class _SelectCountryState extends State<SelectCountry> {
                         ))
                     .toList()
                 : [
-                    Center(
+                    const Center(
                       child: Text("Loading"),
                     )
                   ]),
