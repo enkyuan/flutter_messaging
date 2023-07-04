@@ -1,4 +1,4 @@
-# messaging_app
+# kumo_sdk
 
 A new Flutter project.
 
