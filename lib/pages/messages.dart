@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:messaging_app/pages/channel_details.dart';
 import 'package:messaging_app/states/lib.dart';
@@ -24,25 +25,33 @@ class _MessagesState extends State<Messages> {
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (BuildContext context) => 
-      CustomScrollView(
-        slivers: [
-          const CupertinoSliverNavigationBar(
-            largeTitle: Text("Messages"),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate(
-              messageState.threads.values.toList().map((data) {
-                return CupertinoListTile(
-                  title: Text(data['messengerName']),
-                  subtitle: Text(data['msg']),
-                  onTap: () => callMessagesScreen(context, data['messengerName'], data['messengerUid']),
-              );
-            }).toList()),
-          )
-        ],
-      )
-    );
+        builder: (BuildContext context) => CustomScrollView(
+              slivers: [
+                const CupertinoSliverNavigationBar(
+                  largeTitle: Text("Messages"),
+                ),
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                      messageState.threads.values.toList().map((data) {
+                    return Observer(
+                      builder: (_) => CupertinoListTile(
+                        leading: CircleAvatar(
+                          radius: 20,
+                          backgroundImage: NetworkImage(userState
+                                  .users[data['messengerUid']]['picture'] ??
+                              ''),
+                        ),
+                        title: Text(userState.users[data['messengerUid']]
+                                ['name'] ??
+                            ''),
+                        subtitle: Text(userState.users[data['messengerUid']]
+                                ['status'] ??
+                            ''),
+                      ),
+                    );
+                  }).toList()),
+                )
+              ],
+            ));
   }
 }
-

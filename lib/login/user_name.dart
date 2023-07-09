@@ -24,23 +24,6 @@ class _UserNameState extends State<UserName> {
     super.initState();
   }
 
-  void createUserInFirestore() {
-    users
-        .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-        .limit(1)
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      if (querySnapshot.docs.isEmpty) {
-        users.add({
-          'name': _text.text,
-          'phone': FirebaseAuth.instance.currentUser?.phoneNumber,
-          'status': 'Available',
-          'uid': FirebaseAuth.instance.currentUser?.uid,
-        });
-      }
-    }).catchError((error) {});
-  }
-
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -95,7 +78,6 @@ class _UserNameState extends State<UserName> {
                 FirebaseAuth.instance.currentUser
                     ?.updateDisplayName(_text.text);
 
-                createUserInFirestore();
                 userState.createOrUpdateUserInFirestore(_text.text);
 
                 Navigator.push(context,

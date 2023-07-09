@@ -38,7 +38,7 @@ class _EditNumberState extends State<EditNumber> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: const Color(0xFF08C187).withOpacity(0.7),
-                  fontSize: 40,
+                  fontSize: 35,
                 ),
               ),
             ],

@@ -9,7 +9,7 @@ import 'package:messaging_app/states/lib.dart';
 class Contacts extends StatelessWidget {
   Contacts({Key? key}) : super(key: key);
 
-  var currentUser = FirebaseAuth.instance.currentUser?.uid;
+  final currentUser = FirebaseAuth.instance.currentUser?.uid;
 
   void callMessagesScreen(BuildContext context, String name, String uid) {
     Navigator.push(

@@ -44,6 +44,7 @@ class _ChannelDetailsState extends State<ChannelDetails> {
             setState(() {
               channelDocId = querySnapshot.docs.single.id;
             });
+
             print(channelDocId);
           } else {
             await messages.add({
@@ -106,7 +107,7 @@ class _ChannelDetailsState extends State<ChannelDetails> {
           }
 
           if (snapshot.hasData) {
-            Object data;
+            var data;
             return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
                 previousPageTitle: "Back",
